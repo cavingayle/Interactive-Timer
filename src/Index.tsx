@@ -1,5 +1,4 @@
 import React from "react";
-import ReactDOM from "react-dom";
 import { createRoot } from "react-dom/client";
 import styles from './index.scss'
 
@@ -12,4 +11,7 @@ const Index = () => {
   );
 };
 
-ReactDOM.render(<Index />, document.getElementById("root"));
+const container = document.getElementById('root')
+const root = createRoot(container!)
+root.render(<Index />)
+
