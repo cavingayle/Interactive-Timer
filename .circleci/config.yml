@@ -16,8 +16,7 @@ jobs:
 
     steps:
       - checkout
-
-      - run: npm i -g  
+      - run: npm i
       - run: npm run test
       - run: npm run coverage
       - run: npm run codecov
