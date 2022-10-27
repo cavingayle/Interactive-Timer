@@ -6,7 +6,9 @@
   "scripts": {
     "test": "jest",
     "start": "webpack serve --mode development --open --hot",
-    "build": "webpack --mode production"
+    "build": "webpack --mode production",
+    "coverage": "jest --coverage",
+    "codecov": "./node_modules/.bin/codecov -f coverage/coverage-final.json"
   },
   "author": "",
   "license": "ISC",
@@ -30,6 +32,7 @@
     "babel-jest": "^29.2.0",
     "babel-loader": "^8.2.5",
     "babel-preset-env": "^1.7.0",
+    "codecov": "^3.8.3",
     "css-loader": "^6.7.1",
     "enzyme": "^3.11.0",
     "html-webpack-plugin": "^5.5.0",
