@@ -9,7 +9,7 @@ enum TimerSpeed {
   halfSecond = 1000 / 2,
 }
 
-export const Timer = () => {
+ const Timer = () => {
   const [currentInterval, setCurrentInterval] = useState<NodeJS.Timer>()
   const [isRunning, setIsRunning] = useState<boolean>()
 
@@ -125,3 +125,6 @@ export const Timer = () => {
     </div>
   )
 }
+
+
+export default Timer
