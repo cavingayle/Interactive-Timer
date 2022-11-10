@@ -9,7 +9,7 @@ enum TimerSpeed {
   halfSecond = 1000 / 2,
 }
 
- const Timer = () => {
+const Timer = () => {
   const [currentInterval, setCurrentInterval] = useState<NodeJS.Timer>()
   const [isRunning, setIsRunning] = useState<boolean>()
 
@@ -34,22 +34,25 @@ enum TimerSpeed {
     [timeInput, time]
   )
 
-  const startTimer = useCallback(() => {
-    if (isRunning || !time || time === 0) {
-      return
-    }
-    setIsRunning(true)
-    const interval = setInterval(() => {
-      setTime((prevInput) => {
-        if (prevInput === 1) {
-          clearInterval(interval)
-          setIsRunning(false)
-        }
-        return prevInput - 1
-      })
-    }, timerSpeed)
-    setCurrentInterval(interval)
-  }, [timeInput, isRunning, time])
+  const startTimer = useCallback(
+    (timerSpeed: any) => {
+      if (!time || time === 0) {
+        return
+      }
+      setIsRunning(true)
+      const interval = setInterval(() => {
+        setTime((prevInput) => {
+          if (prevInput === 1) {
+            clearInterval(interval)
+            setIsRunning(false)
+          }
+          return prevInput - 1
+        })
+      }, timerSpeed)
+      setCurrentInterval(interval)
+    },
+    [timeInput, isRunning, time, timerSpeed]
+  )
 
   const pauseTimer = () => {
     clearInterval(currentInterval)
@@ -73,7 +76,7 @@ enum TimerSpeed {
             value={timeInput}
             maxLength={3}
           />
-          <button className={styles['start-button']} onClick={startTimer}>
+          <button className={styles['start-button']} onClick={() => startTimer(timerSpeed)}>
             Start
           </button>
         </span>
@@ -125,6 +128,5 @@ enum TimerSpeed {
     </div>
   )
 }
-
 
 export default Timer
