@@ -1,7 +1,7 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
-import './index.scss'
-import Timer  from "./Timer/Timer";
+import styles from './index.scss'
+import Timer from "./Timer/Timer";
 
 
 const Index = () => {

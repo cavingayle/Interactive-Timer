@@ -75,15 +75,16 @@ const Timer = () => {
             max={999}
             value={timeInput}
             maxLength={3}
+            aria-label="timer-input"
           />
-          <button className={styles['start-button']} onClick={() => startTimer(timerSpeed)}>
+          <button className={styles['start-button']} onClick={startTimer} aria-label="timer-start">
             Start
           </button>
         </span>
         <span className={styles.tagline}>More than halfway there!</span>
         <div className={styles.center}>
           {' '}
-          <span className={styles['time-display']}>
+          <span className={styles['time-display']} aria-label="timer-display">
             {' '}
             {time ? formattedTime : '00:00'}
           </span>
