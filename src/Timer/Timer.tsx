@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useState, useEffect, useCallback } from 'react'
+import React, { ChangeEvent, useState, useCallback } from 'react'
 import styles from './timer.scss'
 
 import { AiOutlinePauseCircle } from 'react-icons/ai'
@@ -31,28 +31,25 @@ const Timer = () => {
         setTime(input * 60)
       }
     },
-    [timeInput, time]
+    [timeInput, time, timerSpeed]
   )
 
-  const startTimer = useCallback(
-    (timerSpeed: any) => {
-      if (!time || time === 0) {
-        return
-      }
-      setIsRunning(true)
-      const interval = setInterval(() => {
-        setTime((prevInput) => {
-          if (prevInput === 1) {
-            clearInterval(interval)
-            setIsRunning(false)
-          }
-          return prevInput - 1
-        })
-      }, timerSpeed)
-      setCurrentInterval(interval)
-    },
-    [timeInput, isRunning, time, timerSpeed]
-  )
+  const startTimer = useCallback(() => {
+    if (isRunning || !time || time === 0) {
+      return
+    }
+    setIsRunning(true)
+    const interval = setInterval(() => {
+      setTime((prevInput) => {
+        if (prevInput === 1) {
+          clearInterval(interval)
+          setIsRunning(false)
+        }
+        return prevInput - 1
+      })
+    }, timerSpeed)
+    setCurrentInterval(interval)
+  }, [timeInput, isRunning, time, timerSpeed])
 
   const pauseTimer = () => {
     clearInterval(currentInterval)
@@ -77,7 +74,11 @@ const Timer = () => {
             maxLength={3}
             aria-label="timer-input"
           />
-          <button className={styles['start-button']} onClick={startTimer} aria-label="timer-start">
+          <button
+            className={styles['start-button']}
+            onClick={startTimer}
+            aria-label="timer-start"
+          >
             Start
           </button>
         </span>
@@ -85,16 +86,16 @@ const Timer = () => {
         <div className={styles.center}>
           {' '}
           <span className={styles['time-display']} aria-label="timer-display">
-            {' '}
             {time ? formattedTime : '00:00'}
           </span>
-          <span onClick={pauseTimer}>
+          <span aria-label="pause-button" onClick={pauseTimer}>
             <AiOutlinePauseCircle size={40} />
           </span>
         </div>
 
         <span className={styles['timer-input-container']}>
           <button
+            aria-label="single-speed-button"
             className={
               timerSpeed === TimerSpeed.oneSecond
                 ? styles['selected-speed-button']
@@ -105,6 +106,7 @@ const Timer = () => {
             1x
           </button>
           <button
+            aria-label="one-and-half-speed"
             className={
               timerSpeed === TimerSpeed.twoThirdsSecond
                 ? styles['selected-speed-button']
@@ -115,6 +117,7 @@ const Timer = () => {
             1.5
           </button>
           <button
+            aria-label="double-speed-button"
             className={
               timerSpeed === TimerSpeed.halfSecond
                 ? styles['selected-speed-button']
