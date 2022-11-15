@@ -17,7 +17,7 @@ const user = userEvent.setup({ delay: null })
 const setup = () => {
   const utils = render(<Timer />)
   const input = utils.getByLabelText('timer-input') as HTMLInputElement
-  const button = utils.getByLabelText('timer-start') as HTMLInputElement
+  const button = utils.getByLabelText('timer-start') as HTMLButtonElement
   const timerDisplay = utils.getByLabelText('timer-display') as HTMLInputElement
   const pauseButton = utils.getByLabelText('pause-button') as HTMLElement
   const doubleSpeedButton = utils.getByLabelText(
@@ -162,4 +162,29 @@ it('Timer should have the correct text', () => {
   expect(screen.getByText('Start')).toBeInTheDocument()
   expect(screen.getByText('More than halfway there!')).toBeInTheDocument()
   expect(screen.getByRole('textbox')).toHaveAttribute('placeholder', '(Min)')
+})
+
+it('Should stop timer when time is finished', async () => {
+  const { input, button, timerDisplay } = setup()
+
+  fireEvent.change(input, { target: { value: 1 } })
+  fireEvent.click(button)
+
+  await waitFor(
+    () => {
+      expect(timerDisplay.textContent).toBe('00:00')
+    },
+    { timeout: 120000 }
+  )
+})
+
+it('Should not start timer without input', async () => {
+  const { input, button, timerDisplay } = setup()
+  fireEvent.click(button)
+  await waitFor(
+    () => {
+      expect(timerDisplay.textContent).toBe('00:00')
+    },
+    { timeout: 10000 }
+  )
 })
