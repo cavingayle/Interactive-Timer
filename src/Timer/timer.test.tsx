@@ -14,7 +14,6 @@ afterEach(() => {
 
 const user = userEvent.setup({ delay: null })
 
-
 const setup = () => {
   const utils = render(<Timer />)
   const input = utils.getByLabelText('timer-input') as HTMLInputElement
@@ -95,8 +94,8 @@ it('Should increase timer speed by double', async () => {
   const { input, button, timerDisplay, pauseButton, doubleSpeedButton } =
     setup()
   fireEvent.change(input, { target: { value: 5 } })
-  fireEvent.click(doubleSpeedButton)
   fireEvent.click(button)
+  fireEvent.click(doubleSpeedButton)
 
   await waitFor(
     () => {
@@ -119,8 +118,8 @@ it('Should increase timer speed by 1.5x', async () => {
   } = setup()
 
   fireEvent.change(input, { target: { value: 5 } })
-  fireEvent.click(oneAndOneHalfSpeed)
   fireEvent.click(button)
+  fireEvent.click(oneAndOneHalfSpeed)
 
   await waitFor(
     () => {
@@ -144,8 +143,8 @@ it('Should increase timer speed to 1x', async () => {
   } = setup()
 
   fireEvent.change(input, { target: { value: 5 } })
-  fireEvent.click(singleSpeedButton)
   fireEvent.click(button)
+  fireEvent.click(singleSpeedButton)
 
   await waitFor(
     () => {

@@ -64,6 +64,11 @@ const Timer = () => {
     setIsRunning(false)
   }
 
+  const changeTimerSpeedWhileRunning = (speed: TimerSpeed) => {
+    pauseTimer()
+    startTimer(speed)
+  }
+
   const formattedTime = formatTime(time)
 
   return (
@@ -112,8 +117,7 @@ const Timer = () => {
             onClick={() => {
               setTimerSpeed(TimerSpeed.oneSecond)
               if (isRunning) {
-                pauseTimer()
-                startTimer(TimerSpeed.oneSecond)
+                changeTimerSpeedWhileRunning(TimerSpeed.oneSecond)
               }
             }}
           >
@@ -129,8 +133,7 @@ const Timer = () => {
             onClick={() => {
               setTimerSpeed(TimerSpeed.twoThirdsSecond)
               if (isRunning) {
-                pauseTimer()
-                startTimer(TimerSpeed.twoThirdsSecond)
+                changeTimerSpeedWhileRunning(TimerSpeed.twoThirdsSecond)
               }
             }}
           >
@@ -146,9 +149,7 @@ const Timer = () => {
             onClick={() => {
               setTimerSpeed(TimerSpeed.halfSecond)
               if (isRunning) {
-                pauseTimer()
-
-                startTimer(TimerSpeed.halfSecond)
+                changeTimerSpeedWhileRunning(TimerSpeed.halfSecond)
               }
             }}
           >
