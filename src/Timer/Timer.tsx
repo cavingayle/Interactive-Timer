@@ -34,22 +34,30 @@ const Timer = () => {
     [timeInput, time, timerSpeed]
   )
 
-  const startTimer = useCallback(() => {
-    if (isRunning || !time || time === 0) {
-      return
-    }
-    setIsRunning(true)
-    const interval = setInterval(() => {
-      setTime((prevInput) => {
-        if (prevInput === 1) {
-          clearInterval(interval)
-          setIsRunning(false)
-        }
-        return prevInput - 1
-      })
-    }, timerSpeed)
-    setCurrentInterval(interval)
-  }, [timeInput, isRunning, time, timerSpeed])
+  const startTimer = useCallback(
+    (speed?: number) => {
+      console.log('in the start timer')
+
+      if ((isRunning && !speed) || !time || time === 0) {
+        return
+      }
+      setIsRunning(true)
+      const interval = setInterval(
+        () => {
+          setTime((prevInput) => {
+            if (prevInput === 1) {
+              clearInterval(interval)
+              setIsRunning(false)
+            }
+            return prevInput - 1
+          })
+        },
+        speed ? speed : timerSpeed
+      )
+      setCurrentInterval(interval)
+    },
+    [isRunning, time, timerSpeed]
+  )
 
   const pauseTimer = () => {
     clearInterval(currentInterval)
@@ -76,7 +84,7 @@ const Timer = () => {
           />
           <button
             className={styles['start-button']}
-            onClick={startTimer}
+            onClick={() => startTimer()}
             aria-label="timer-start"
           >
             Start
@@ -101,7 +109,13 @@ const Timer = () => {
                 ? styles['selected-speed-button']
                 : styles['speed-button']
             }
-            onClick={() => setTimerSpeed(TimerSpeed.oneSecond)}
+            onClick={() => {
+              setTimerSpeed(TimerSpeed.oneSecond)
+              if (isRunning) {
+                pauseTimer()
+                startTimer(TimerSpeed.oneSecond)
+              }
+            }}
           >
             1x
           </button>
@@ -112,7 +126,13 @@ const Timer = () => {
                 ? styles['selected-speed-button']
                 : styles['speed-button']
             }
-            onClick={() => setTimerSpeed(TimerSpeed.twoThirdsSecond)}
+            onClick={() => {
+              setTimerSpeed(TimerSpeed.twoThirdsSecond)
+              if (isRunning) {
+                pauseTimer()
+                startTimer(TimerSpeed.twoThirdsSecond)
+              }
+            }}
           >
             1.5
           </button>
@@ -123,7 +143,14 @@ const Timer = () => {
                 ? styles['selected-speed-button']
                 : styles['speed-button']
             }
-            onClick={() => setTimerSpeed(TimerSpeed.halfSecond)}
+            onClick={() => {
+              setTimerSpeed(TimerSpeed.halfSecond)
+              if (isRunning) {
+                pauseTimer()
+
+                startTimer(TimerSpeed.halfSecond)
+              }
+            }}
           >
             2x
           </button>

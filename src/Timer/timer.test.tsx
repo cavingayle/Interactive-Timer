@@ -1,16 +1,10 @@
-import {
-  render,
-  fireEvent,
-  screen,
-  waitFor,
-} from '@testing-library/react'
+import { render, fireEvent, screen, waitFor } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import userEvent from '@testing-library/user-event'
-
 import Timer from './Timer'
 
 beforeEach(() => {
-  jest.useFakeTimers()
+  jest.useFakeTimers({})
 })
 
 afterEach(() => {
@@ -20,7 +14,6 @@ afterEach(() => {
 
 const user = userEvent.setup({ delay: null })
 
-let component
 
 const setup = () => {
   const utils = render(<Timer />)
@@ -86,15 +79,17 @@ it('Timer takes input and decrements time', async () => {
   })
 })
 
-// it('Should pause timer', async () => {
-//   const { input, button, timerDisplay, pauseButton } = setup()
-//   fireEvent.change(input, { target: { value: 5 } })
-//   fireEvent.click(pauseButton)
-
-//   user.click(button)
-//   jest.advanceTimersByTime(5000)
-//  expect(timerDisplay.textContent).toBe('4:56')
-// })
+// The issue here was this function was async which was async which was stopping the timer from advancing
+// testing by advancing the timer twice separately
+it('Should pause timer', () => {
+  const { input, button, timerDisplay, pauseButton } = setup()
+  fireEvent.change(input, { target: { value: 5 } })
+  fireEvent.click(button)
+  jest.advanceTimersByTime(4000)
+  fireEvent.click(pauseButton)
+  jest.advanceTimersByTime(10000)
+  expect(timerDisplay.textContent).toBe('4:56')
+})
 
 it('Should increase timer speed by double', async () => {
   const { input, button, timerDisplay, pauseButton, doubleSpeedButton } =
@@ -132,7 +127,7 @@ it('Should increase timer speed by 1.5x', async () => {
       expect(timerDisplay.textContent).toBe('3:30')
     },
     {
-      timeout: 60000,
+      timeout: 61000,
     }
   )
 })
