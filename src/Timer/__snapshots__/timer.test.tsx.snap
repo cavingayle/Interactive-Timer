@@ -1,0 +1,325 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`It should render the page and match the snapshot 1`] = `
+<div>
+  <div>
+    <span>
+      <strong>
+        Countdown:
+      </strong>
+      <input
+        aria-label="timer-input"
+        max={999}
+        maxLength={3}
+        min={0}
+        onChange={[Function]}
+        placeholder="(Min)"
+        type="tel"
+      />
+      <button
+        aria-label="timer-start"
+        onClick={[Function]}
+      >
+        Start
+      </button>
+    </span>
+    <span>
+      More than halfway there!
+    </span>
+    <div>
+       
+      <span
+        aria-label="timer-display"
+      >
+        00:00
+      </span>
+      <span
+        aria-label="pause-button"
+        onClick={[Function]}
+      >
+        <svg
+          fill="currentColor"
+          height={40}
+          stroke="currentColor"
+          strokeWidth="0"
+          style={
+            {
+              "color": undefined,
+            }
+          }
+          viewBox="0 0 1024 1024"
+          width={40}
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372zm-88-532h-48c-4.4 0-8 3.6-8 8v304c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V360c0-4.4-3.6-8-8-8zm224 0h-48c-4.4 0-8 3.6-8 8v304c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V360c0-4.4-3.6-8-8-8z"
+          />
+        </svg>
+      </span>
+    </div>
+    <span>
+      <button
+        aria-label="single-speed-button"
+        onClick={[Function]}
+      >
+        1x
+      </button>
+      <button
+        aria-label="one-and-half-speed"
+        onClick={[Function]}
+      >
+        1.5
+      </button>
+      <button
+        aria-label="double-speed-button"
+        onClick={[Function]}
+      >
+        2x
+      </button>
+    </span>
+  </div>
+</div>
+`;
+
+exports[`Should render the page and match the snapshot 1`] = `
+<div>
+  <div>
+    <span>
+      <strong>
+        Countdown:
+      </strong>
+      <input
+        aria-label="timer-input"
+        max={999}
+        maxLength={3}
+        min={0}
+        onChange={[Function]}
+        placeholder="(Min)"
+        type="tel"
+      />
+      <button
+        aria-label="timer-start"
+        onClick={[Function]}
+      >
+        Start
+      </button>
+    </span>
+    <span>
+      More than halfway there!
+    </span>
+    <div>
+       
+      <span
+        aria-label="timer-display"
+      >
+        00:00
+      </span>
+      <span
+        aria-label="pause-button"
+        onClick={[Function]}
+      >
+        <svg
+          fill="currentColor"
+          height={40}
+          stroke="currentColor"
+          strokeWidth="0"
+          style={
+            {
+              "color": undefined,
+            }
+          }
+          viewBox="0 0 1024 1024"
+          width={40}
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372zm-88-532h-48c-4.4 0-8 3.6-8 8v304c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V360c0-4.4-3.6-8-8-8zm224 0h-48c-4.4 0-8 3.6-8 8v304c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V360c0-4.4-3.6-8-8-8z"
+          />
+        </svg>
+      </span>
+    </div>
+    <span>
+      <button
+        aria-label="single-speed-button"
+        onClick={[Function]}
+      >
+        1x
+      </button>
+      <button
+        aria-label="one-and-half-speed"
+        onClick={[Function]}
+      >
+        1.5
+      </button>
+      <button
+        aria-label="double-speed-button"
+        onClick={[Function]}
+      >
+        2x
+      </button>
+    </span>
+  </div>
+</div>
+`;
+
+exports[`Should render with all page elements 1`] = `
+<div>
+  <div>
+    <span>
+      <strong>
+        Countdown:
+      </strong>
+      <input
+        aria-label="timer-input"
+        max={999}
+        maxLength={3}
+        min={0}
+        onChange={[Function]}
+        placeholder="(Min)"
+        type="tel"
+      />
+      <button
+        aria-label="timer-start"
+        onClick={[Function]}
+      >
+        Start
+      </button>
+    </span>
+    <span>
+      More than halfway there!
+    </span>
+    <div>
+       
+      <span
+        aria-label="timer-display"
+      >
+        00:00
+      </span>
+      <span
+        aria-label="pause-button"
+        onClick={[Function]}
+      >
+        <svg
+          fill="currentColor"
+          height={40}
+          stroke="currentColor"
+          strokeWidth="0"
+          style={
+            {
+              "color": undefined,
+            }
+          }
+          viewBox="0 0 1024 1024"
+          width={40}
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372zm-88-532h-48c-4.4 0-8 3.6-8 8v304c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V360c0-4.4-3.6-8-8-8zm224 0h-48c-4.4 0-8 3.6-8 8v304c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V360c0-4.4-3.6-8-8-8z"
+          />
+        </svg>
+      </span>
+    </div>
+    <span>
+      <button
+        aria-label="single-speed-button"
+        onClick={[Function]}
+      >
+        1x
+      </button>
+      <button
+        aria-label="one-and-half-speed"
+        onClick={[Function]}
+      >
+        1.5
+      </button>
+      <button
+        aria-label="double-speed-button"
+        onClick={[Function]}
+      >
+        2x
+      </button>
+    </span>
+  </div>
+</div>
+`;
+
+exports[`renders 1`] = `
+<div>
+  <div>
+    <span>
+      <strong>
+        Countdown:
+      </strong>
+      <input
+        aria-label="timer-input"
+        max={999}
+        maxLength={3}
+        min={0}
+        onChange={[Function]}
+        placeholder="(Min)"
+        type="tel"
+      />
+      <button
+        aria-label="timer-start"
+        onClick={[Function]}
+      >
+        Start
+      </button>
+    </span>
+    <span>
+      More than halfway there!
+    </span>
+    <div>
+       
+      <span
+        aria-label="timer-display"
+      >
+        00:00
+      </span>
+      <span
+        aria-label="pause-button"
+        onClick={[Function]}
+      >
+        <svg
+          fill="currentColor"
+          height={40}
+          stroke="currentColor"
+          strokeWidth="0"
+          style={
+            {
+              "color": undefined,
+            }
+          }
+          viewBox="0 0 1024 1024"
+          width={40}
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372zm-88-532h-48c-4.4 0-8 3.6-8 8v304c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V360c0-4.4-3.6-8-8-8zm224 0h-48c-4.4 0-8 3.6-8 8v304c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V360c0-4.4-3.6-8-8-8z"
+          />
+        </svg>
+      </span>
+    </div>
+    <span>
+      <button
+        aria-label="single-speed-button"
+        onClick={[Function]}
+      >
+        1x
+      </button>
+      <button
+        aria-label="one-and-half-speed"
+        onClick={[Function]}
+      >
+        1.5
+      </button>
+      <button
+        aria-label="double-speed-button"
+        onClick={[Function]}
+      >
+        2x
+      </button>
+    </span>
+  </div>
+</div>
+`;
