@@ -2,7 +2,7 @@ import { render, fireEvent, screen, waitFor } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import userEvent from '@testing-library/user-event'
 import Timer from './Timer'
-
+import * as renderer from 'react-test-renderer'
 beforeEach(() => {
   jest.useFakeTimers({})
 })
@@ -187,4 +187,29 @@ it('Should not start timer without input', async () => {
     },
     { timeout: 10000 }
   )
+})
+
+it('Should render with all page elements', () => {
+  const tree = renderer.create(<Timer />).toJSON()
+  expect(tree).toMatchSnapshot()
+})
+
+it('Should render the page and match the snapshot', async () => {
+  const tree = renderer.create(<Timer />).toJSON()
+
+  const { input, button, timerDisplay, pauseButton, doubleSpeedButton } =
+    setup()
+  fireEvent.change(input, { target: { value: 5 } })
+  fireEvent.click(button)
+  fireEvent.click(doubleSpeedButton)
+
+  await waitFor(
+    () => {
+      expect(tree).toMatchSnapshot()
+    },
+    {
+      timeout: 61000,
+    }
+  )
+  screen.debug()
 })

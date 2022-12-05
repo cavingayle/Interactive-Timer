@@ -4,6 +4,8 @@ interface CssExports {
   'button-container': string;
   'center': string;
   'container': string;
+  'disabled-button': string;
+  'reset-button': string;
   'selected-speed-button': string;
   'speed-button': string;
   'start-button': string;
