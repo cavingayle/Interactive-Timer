@@ -36,8 +36,6 @@ const Timer = () => {
 
   const startTimer = useCallback(
     (speed?: number) => {
-      console.log('in the start timer')
-
       if ((isRunning && !speed) || !time || time === 0) {
         return
       }
@@ -62,6 +60,12 @@ const Timer = () => {
   const pauseTimer = () => {
     clearInterval(currentInterval)
     setIsRunning(false)
+  }
+
+  const resetTimer = () => {
+    pauseTimer()
+    setTimeInput(0)
+    setTime(0)
   }
 
   const changeTimerSpeedWhileRunning = (speed: TimerSpeed) => {
@@ -93,6 +97,13 @@ const Timer = () => {
             aria-label="timer-start"
           >
             Start
+          </button>
+          <button
+            className={styles['reset-button']}
+            onClick={() => resetTimer()}
+            aria-label="timer-start"
+          >
+            Reset
           </button>
         </span>
         <span className={styles.tagline}>More than halfway there!</span>
