@@ -2,6 +2,8 @@
 
 [![codecov](https://codecov.io/gh/cavingayle/Interactive-Timer/branch/main/graph/badge.svg?token=K2IG9E9BUY)](https://codecov.io/gh/cavingayle/Interactive-Timer)
 
+[![cavingayle](https://circleci.com/gh/cavingayle/Interactive-Timer.svg?style=svg)]([<LINK>](https://github.com/cavingayle/Interactive-Timer))
+
 
 Interactive Timer allows you to enter a specified time into the input and begin a countdown. You can also increase the speed of the time by 1.5x or 2x.
 
