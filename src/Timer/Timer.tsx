@@ -1,5 +1,6 @@
 import React, { ChangeEvent, useState, useCallback } from 'react'
 import styles from './timer.scss'
+import { debounce, isNil } from 'lodash'
 
 import { AiOutlinePauseCircle } from 'react-icons/ai'
 
@@ -11,10 +12,10 @@ enum TimerSpeed {
 
 const Timer = () => {
   const [currentInterval, setCurrentInterval] = useState<NodeJS.Timer>()
-  const [isRunning, setIsRunning] = useState<boolean>()
+  const [isRunning, setIsRunning] = useState<boolean>(false)
 
-  const [time, setTime] = useState<number>()
-  const [timeInput, setTimeInput] = useState<number>()
+  const [time, setTime] = useState<number>(0)
+  const [timeInput, setTimeInput] = useState<number>(0)
   const [timerSpeed, setTimerSpeed] = useState<TimerSpeed>(TimerSpeed.oneSecond)
 
   const formatTime = (seconds: number) => {
@@ -36,9 +37,10 @@ const Timer = () => {
 
   const startTimer = useCallback(
     (speed?: number) => {
-      if ((isRunning && !speed) || !time || time === 0) {
+      if ((isRunning && isNil(speed)) || !time || time === 0) {
         return
       }
+     
       setIsRunning(true)
       const interval = setInterval(
         () => {
@@ -56,6 +58,13 @@ const Timer = () => {
     },
     [isRunning, time, timerSpeed]
   )
+
+
+  const debouncedStartTimer = useCallback(debounce(startTimer, 300), [
+    timerSpeed,
+    timeInput,
+    isRunning
+  ])
 
   const pauseTimer = () => {
     clearInterval(currentInterval)
@@ -75,11 +84,21 @@ const Timer = () => {
 
   const formattedTime = formatTime(time)
 
+  const timerCopy = {
+    countDown: 'Countdown:',
+    start: 'Start',
+    reset: 'Reset',
+    tagLine: 'More than halfway there!',
+    oneSpeed: '1x',
+    doubleSpeed: '2x',
+    oneAndHalfSpeed: '1.5',
+  }
+
   return (
     <div className={styles.container}>
       <div className={styles.timer}>
         <span className={styles['timer-input-container']}>
-          <strong>Countdown:</strong>
+          <strong>{timerCopy.countDown}</strong>
           <input
             className={styles['timer-input']}
             placeholder="(Min)"
@@ -93,20 +112,20 @@ const Timer = () => {
           />
           <button
             className={styles['start-button']}
-            onClick={() => startTimer()}
+            onClick={() => debouncedStartTimer()}
             aria-label="timer-start"
           >
-            Start
+            {timerCopy.start}
           </button>
           <button
             className={styles['reset-button']}
             onClick={() => resetTimer()}
             aria-label="timer-start"
           >
-            Reset
+            {timerCopy.reset}
           </button>
         </span>
-        <span className={styles.tagline}>More than halfway there!</span>
+        <span className={styles.tagline}>{timerCopy.tagLine}</span>
         <div className={styles.center}>
           {' '}
           <span className={styles['time-display']} aria-label="timer-display">
@@ -132,7 +151,7 @@ const Timer = () => {
               }
             }}
           >
-            1x
+            {timerCopy.oneSpeed}
           </button>
           <button
             aria-label="one-and-half-speed"
@@ -148,7 +167,7 @@ const Timer = () => {
               }
             }}
           >
-            1.5
+            {timerCopy.oneAndHalfSpeed}
           </button>
           <button
             aria-label="double-speed-button"
@@ -164,7 +183,7 @@ const Timer = () => {
               }
             }}
           >
-            2x
+            {timerCopy.doubleSpeed}
           </button>
         </span>
       </div>
